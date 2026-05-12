@@ -1,83 +1,48 @@
-# Alice
-A Simpler Photo Viewer
+Alice Photo Viewer
 
-Un gestore di librerie fotografiche desktop ultra-veloce, progettato per archivi massivi.
+Alice è un gestore di librerie fotografiche desktop progettato per la velocità. È costruito per gestire archivi massivi — centinaia di gigabyte e decine di migliaia di file — evitando i rallentamenti tipici dei visualizzatori standard.
 
-Alice è una galleria fotografica standalone costruita per la velocità assoluta. Progettata per gestire centinaia di gigabyte di dati e decine di migliaia di file senza rallentamenti, mantiene la mente dell'utente in un flusso continuo, eliminando del tutto la presura (lo stress) dei classici caricamenti lenti o dei crash dovuti a librerie troppo grandi.
-🚀 Caratteristiche Principali
+Il cuore di Alice è il mantenimento del Flusso: l'obiettivo è eliminare la "presura" (quello stress da caricamento infinito) per permettere all'utente di scorrere tra i propri ricordi in modo fluido, naturale e senza interruzioni tecniche.
+🚀 Caratteristiche
 
-    ⚡ Prestazioni Estreme: Gestisce librerie da oltre 300+ GB con tempi di avvio quasi istantanei (sotto i 50ms).
+    Progettato per la Velocità: Ottimizzato per gestire librerie da 300GB+ con tempi di risposta immediati.
 
-    🧠 Virtual Scrolling & Lazy Loading: Le immagini vengono caricate in RAM e renderizzate dalla GPU solo quando entrano nell'area visibile dello schermo, per poi essere distrutte quando escono.
+    Rendering Intelligente: Utilizza Virtual Scrolling e Lazy Loading. Le immagini vengono caricate in memoria e renderizzate via GPU solo quando necessario, liberando risorse appena escono dallo schermo.
 
-    🏎️ Indicizzazione Multi-Thread: Scansione asincrona parallela che sfrutta tutti i core della CPU per analizzare e indicizzare migliaia di file e metadati EXIF in pochi secondi.
+    Indexing Multi-Thread: Uno scanner asincrono parallelo analizza file e metadati EXIF senza bloccare l'interfaccia.
 
-    📦 Miniature On-The-Fly: Le anteprime pesanti non vengono generate in blocco bloccando l'interfaccia, ma calcolate al volo e servite tramite una cache LRU in JavaScript intelligente.
+    Cache Dinamica: Le miniature vengono generate al volo e gestite tramite una cache LRU (Least Recently Used), garantendo una navigazione fluida anche in cartelle con migliaia di elementi.
 
-    🎨 UI Frameless Custom: Design moderno, pulito e nativo, con controlli finestra personalizzati e un drag perfetto integrato a livello di sistema operativo (Windows API).
+    Interfaccia Frameless: Design moderno e pulito con integrazione nativa delle API Windows per il trascinamento della finestra e i controlli di sistema.
 
-    📁 Gestione Avanzata: Supporto per creazione di Album, Preferiti (con salvataggio rapido in localStorage e SQLite), filtri e visualizzazione dei dettagli del file.
+    Organizzazione: Supporto nativo per Album, Preferiti e filtri rapidi, con persistenza dei dati tramite SQLite.
 
 🛠️ Stack Tecnologico
 
-Il software utilizza un'architettura ibrida all'avanguardia per unire la potenza del backend alla flessibilità del web:
+Alice sfrutta un'architettura ibrida per unire stabilità e flessibilità:
 
-    Backend: Python 3
+    Backend: Python 3 (Logica di sistema e I/O)
 
-    Database: SQLite3 (con transazioni ottimizzate WAL)
+    Database: SQLite3 con modalità WAL (Write-Ahead Logging) per transazioni rapide.
 
-    Ponte di Comunicazione: pywebview (connessione C++/JS)
+    Interfaccia: pywebview per la comunicazione a bassa latenza tra Python e il frontend.
 
-    Elaborazione Immagini: Pillow (PIL)
+    Elaborazione Immagini: Pillow (PIL).
 
-    Frontend: HTML5, CSS3, Vanilla JavaScript (Zero framework per la massima efficienza)
+    Frontend: Vanilla JavaScript, HTML5 e CSS3 (Zero framework per la massima leggerezza).
 
-    Iconografia: Lucide Icons
+    Iconografia: Lucide Icons.
 
 📂 Struttura del Progetto
 Plaintext
 
 Alice/
-├── main.py               # Backend Python, Motore DB, API Webview
+├── main.py               # Backend, motore DB e API Webview
 ├── alice_archivio.db     # Database SQLite (generato al primo avvio)
-├── .alice_cache/         # Cartella nascosta per le miniature WebP (generata al primo avvio)
+├── .alice_cache/         # Directory nascosta per le miniature WebP
 └── ui/
-    └── index.html        # Frontend: UI, Stili e logica JavaScript (Radar, Caching, Virtual Rendering)
-
-💻 Installazione e Sviluppo
-Prerequisiti
-
-Assicurati di avere Python 3.8+ installato sul tuo sistema.
-1. Clona e installa le dipendenze
-
-Apri il terminale nella cartella del progetto ed esegui:
-Bash
-
-pip install pywebview Pillow
-
-2. Avvia in modalità sviluppo
-
-Per lanciare l'applicazione ed eseguire i test:
-Bash
-
-python main.py
-
-📦 Compilazione (Eseguibile Standalone)
-
-Per distribuire Alice su macchine Windows senza la necessità di installare Python o altre dipendenze, utilizza PyInstaller.
-
-    Installa PyInstaller:
-    Bash
-
-    pip install pyinstaller
-
-    Compila l'eseguibile (lancia il comando dalla root del progetto):
-    Bash
-
-    pyinstaller --noconsole --name "Alice" --add-data "ui;ui" main.py
-
-    Troverai la tua applicazione pronta all'uso all'interno della cartella dist/Alice. Basterà copiare l'intera cartella su una chiavetta per avere Alice sempre con te.
+    └── index.html        # UI, Stili e logica JS (Virtual Rendering & Caching)
 
 🤝 Contribuire
 
-Hai un'idea per ottimizzare ulteriormente il caricamento o aggiungere il supporto per nuovi formati RAW? Le Pull Request sono benvenute! Assicurati di non bloccare mai il thread principale della UI nei tuoi commit.
+Le Pull Request sono benvenute, specialmente se mirate a ottimizzare ulteriormente il caricamento o a supportare nuovi formati RAW. L'unica regola: il thread principale della UI deve rimanere sempre libero per garantire il Chilling
