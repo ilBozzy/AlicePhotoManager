@@ -1,55 +1,37 @@
-Alice
-A Simpler Photo Viewer
+# Alice
 
-Alice è un gestore di librerie fotografiche desktop progettato per la velocità. È costruito per gestire archivi massivi — centinaia di gigabyte e decine di migliaia di file — evitando i rallentamenti tipici dei visualizzatori standard.
+### A High-Performance Desktop Photo Manager
 
-Il cuore di Alice è il mantenimento del Flusso: l'obiettivo è eliminare la "presura" (quello stress da caricamento infinito) per permettere all'utente di scorrere tra i propri ricordi in modo fluido, naturale e senza interruzioni tecniche.
-⚠️ Disclaimer & Scarico di Responsabilità
+**Alice** is a standalone photo gallery engine engineered for speed. It is specifically built to handle massive archives consisting of hundreds of gigabytes and tens of thousands of files while avoiding the performance degradation typical of standard image viewers.
 
-Prima di procedere con l'utilizzo di questo software, è necessario leggere e comprendere le seguenti condizioni:
+The core philosophy of Alice is the maintenance of **Flow**. The primary objective is to eliminate "presura"—the unnecessary mental stress caused by infinite loading times—allowing the user to navigate through memories in a fluid, natural, and uninterrupted manner.
 
-    Software non firmato: Il binario non possiede una firma digitale certificata. Windows Defender o altri antivirus potrebbero identificarlo come potenziale minaccia; questo è un comportamento previsto per software non firmati in fase di sviluppo.
+---
 
-    Limitazione di Responsabilità: Lo sviluppatore non si assume alcuna responsabilità per danni diretti o indiretti al sistema, perdita di dati o instabilità hardware/software derivanti dall'uso di questo tool. L'utilizzo avviene a totale rischio dell'utente.
+## ⚠️ Disclaimer and Limitation of Liability
 
-    Versione Beta: Il software è destinato esclusivamente a utenti esperti consapevoli dei rischi legati all'esecuzione di codice in fase di testing.
+Before proceeding with this software, you must read and understand the following conditions. This binary does not possess a certified digital signature. Windows Defender or other antivirus software will likely flag it as a potential threat, which is expected behavior for unsigned software in development. The developer assumes no responsibility or liability for any direct or indirect damage to hardware or software, data loss, or system instability. Use of this software is strictly at your own risk. This is a Beta version intended exclusively for advanced users who understand the risks of executing testing-phase code. The software is portable and requires no installation; simply extract the archive and run the executable.
 
-    Utilizzo: Il software è di tipo portable. Non richiede installazione: è sufficiente estrarre l'archivio (.zip) in una cartella ed eseguire il file.
+---
 
-🚀 Caratteristiche
+## 🚀 Features
 
-    Progettato per la Velocità: Ottimizzato per gestire librerie da 300GB+ con tempi di risposta immediati.
+Alice is optimized for speed and capable of managing 300GB+ libraries with immediate response times. It utilizes advanced Virtual Scrolling and Lazy Loading where images are rendered via GPU only when necessary and resources are freed as soon as they leave the screen. A parallel multi-threaded indexer analyzes files and EXIF metadata without blocking the interface. Thumbnails are generated on-the-fly and managed through a dynamic Least Recently Used (LRU) cache to ensure smooth navigation. The frameless interface offers a modern design with native Windows API integration for seamless window dragging and system controls.
 
-    Rendering Intelligente: Utilizza Virtual Scrolling e Lazy Loading. Le immagini vengono renderizzate via GPU solo quando necessario, liberando risorse appena escono dallo schermo.
+---
 
-    Indexing Multi-Thread: Uno scanner asincrono parallelo analizza file e metadati EXIF senza bloccare l'interfaccia.
+## 🛠️ Tech Stack and Development
 
-    Cache Dinamica: Miniature generate al volo e gestite tramite una cache LRU (Least Recently Used) per una navigazione fluida.
+The software leverages a hybrid architecture for stability and flexibility. The backend is powered by Python 3 for system logic and I/O while the database utilizes SQLite3 with Write-Ahead Logging (WAL) for rapid transactions. The frontend is built with Vanilla JavaScript, HTML5, and CSS3 to ensure maximum efficiency without framework overhead. Iconography is provided by Lucide Icons under the free ISC license. The optimization and debugging process was supported by Claude (Anthropic) to ensure clean code structure and efficient thread management.
 
-    Interfaccia Frameless: Design moderno con integrazione nativa delle API Windows per il trascinamento e i controlli di sistema.
+---
 
-🛠️ Stack Tecnologico & Sviluppo
+## ⚖️ Legal Notes and Distribution
 
-Alice sfrutta un'architettura ibrida per unire stabilità e flessibilità:
+Alice is developed for personal and educational utility and has no commercial purpose. It is strictly prohibited to sell, monetize, or commercialize this software in any form. The software may not be redistributed or republished on other portals without explicit authorization and is intended for individual use only.
 
-    Backend: Python 3 (Logica di sistema e I/O).
+---
 
-    Database: SQLite3 con modalità WAL (Write-Ahead Logging).
+## 🤝 Contributing
 
-    Frontend: Vanilla JavaScript, HTML5 e CSS3 (Zero framework per la massima leggerezza).
-
-    Iconografia: Lucide Icons (utilizzate sotto licenza libera ISC).
-
-    Debugging: Il processo di ottimizzazione e debugging è stato supportato dall'intelligenza artificiale Claude (Anthropic).
-
-⚖️ Note Legali e Distribuzione
-
-    No Profit: Alice non ha alcuno scopo di lucro e viene distribuito gratuitamente.
-
-    Divieto di Vendita: È severamente vietata la commercializzazione o la vendita di questo software.
-
-    Restrizioni alla Distribuzione: Il software non può essere condiviso o ripubblicato su altri portali senza autorizzazione. È destinato esclusivamente all'uso individuale.
-
-🤝 Contribuire
-
-Le Pull Request sono benvenute, specialmente se mirate a ottimizzare ulteriormente il caricamento. L'unica regola: il thread principale della UI deve rimanere sempre libero per garantire il Flusso.
+Pull Requests are welcome, particularly those focused on further loading optimizations. The fundamental rule for all contributions is that the main UI thread must remain entirely free to guarantee the Flow.
